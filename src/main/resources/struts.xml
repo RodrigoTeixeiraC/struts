@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="projstrutsmaven" extends="struts-default">
+ 
+	<action name="usuarioaction.login" 
+	   	class="br.com.stefanini.projstrutsmaven.controller.UsuarioAction" 
+		method="login">
+		<result name="input">/login.jsp</result>
+		<result name="login">/prof/inicio.jsp</result>
+		<result name="success">/aluno/inicio.jsp</result>
+		<result name="error">/error.jsp</result>
+	</action>
+	
+	<action name="usuarioaction.cadastrar" 
+	   	class="br.com.stefanini.projstrutsmaven.controller.UsuarioAction" 
+		method="cadastrar">
+		<result name="input">/cadastrar.jsp</result>
+		<result name="success">/login.jsp</result>
+		<result name="error">/error.jsp</result>
+	</action>
+	
+	<action name="provaaction.criarProva" 
+	   	class="br.com.stefanini.projstrutsmaven.controller.ProvaAction" 
+		method="criarProva">
+		<result name="input">/prof/inicio.jsp</result>
+		<result name="success">/prof/prova.jsp</result>
+		<result name="error">/error.jsp</result>
+	</action>
+	
+	<action name="provaaction.buscarProvas" 
+	   	class="br.com.stefanini.projstrutsmaven.controller.ProvaAction" 
+		method="buscarProvas">
+		<result name="input">/prof/inicio.jsp</result>
+		<result name="success">/prof/verprovas.jsp</result>
+		<result name="error">/error.jsp</result>
+	</action>
+	
+	<action name="provaaction.buscarProvasAluno" 
+	   	class="br.com.stefanini.projstrutsmaven.controller.ProvaAction" 
+		method="buscarProvasAluno">
+		<result name="input">/aluno/inicio.jsp</result>
+		<result name="success">/aluno/verprovas.jsp</result>
+		<result name="error">/error.jsp</result>
+	</action>
+	
+	<action name="questaoaction.buscarQuestoes" 
+	   	class="br.com.stefanini.projstrutsmaven.controller.QuestaoAction" 
+		method="buscarQuestoes">
+		<result name="input">/aluno/verprovas.jsp</result>
+		<result name="success">/aluno/realizarprova.jsp</result>
+		<result name="error">/error.jsp</result>
+	</action>
+	
+	
+	<action name="questaoaction.criarQuestao" 
+	   	class="br.com.stefanini.projstrutsmaven.controller.QuestaoAction" 
+		method="criarQuestao">
+		<result name="input">/prof/prova.jsp</result>
+		<result name="success">/prof/prova.jsp</result>
+		<result name="error">/error.jsp</result>
+	</action>
+	
+	<action name="questaoaction.finalizarProva" 
+	   	class="br.com.stefanini.projstrutsmaven.controller.QuestaoAction" 
+		method="finalizarProva">
+		<result name="input">/aluno/realizarprova.jsp</result>
+		<result name="success">/aluno/provarealizada.jsp</result>
+		<result name="error">/error.jsp</result>
+	</action>
+	
+	
+
+	</package>
+</struts>
