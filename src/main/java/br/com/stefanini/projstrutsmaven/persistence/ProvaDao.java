@@ -38,5 +38,27 @@ public class ProvaDao extends Dao {
 		close();
 		return provas;
 	}
-
+	
+	public void deleteProva(Integer id) throws Exception {
+		open();
+		stmt = con.prepareStatement("delete from prova where id = ?");
+		stmt.setInt(1, id);
+		stmt.execute();
+		stmt.close();
+	}
+	
+	public Integer updateProva(Prova p) throws Exception {
+		open();
+		Integer chave = 0;
+		stmt = con.prepareStatement("update prova set materia = ? where id = ? ", PreparedStatement.RETURN_GENERATED_KEYS);
+		stmt.setString(1, p.getMateria());
+		stmt.setInt(2, p.getIdProva());
+		stmt.executeUpdate();
+		rs = stmt.getGeneratedKeys();
+		rs.next();
+		chave = rs.getInt(1);
+		stmt.close();
+		close();
+		return chave;
+	}
 }

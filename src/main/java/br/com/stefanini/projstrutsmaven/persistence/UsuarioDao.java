@@ -42,5 +42,32 @@ public class UsuarioDao extends Dao {
 		close();
 		return resp;
 	}
+	
+	public void deleteUsuario(Integer id) throws Exception {
+		open();
+		stmt = con.prepareStatement("delete from usuario where id = ?");
+		stmt.setInt(1, id);
+		stmt.execute();
+		stmt.close();
+	}
+	
+	public Integer updateUsuario(Usuario u) throws Exception {
+		open();
+		Integer chave = 0;
+		stmt = con.prepareStatement("update usuario set nome = ?, email = ?, senha = ?, perfil = ? where id = ?",
+				PreparedStatement.RETURN_GENERATED_KEYS);
+		stmt.setString(1, u.getNome());
+		stmt.setString(2, u.getEmail());
+		stmt.setString(3, u.getSenha());
+		stmt.setString(4, u.getPerfil());
+		stmt.setInt(5, u.getIdUsuario());
+		stmt.executeUpdate();
+		rs = stmt.getGeneratedKeys();
+		rs.next();
+		chave = rs.getInt(1);
+		stmt.close();
+		close();
+		return chave;
+	}
 
 }
